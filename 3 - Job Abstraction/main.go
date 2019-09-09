@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"log" // PYTHON: Similar to python's logging
 	"os"
 
 	"github.com/dohe/lets-golang/api"
@@ -14,7 +14,7 @@ var (
 
 func waitForResponse(results chan jobs.JobResult) {
 	select {
-	case result := <-results:
+	case result := <-results: // PYTHON: You could build something similar with queue and threads
 		if result.Err != nil {
 			logger.Printf("%s failed: %s\n", result.ID, result.Err.Error())
 		} else {
@@ -43,7 +43,7 @@ func main() {
 	numCalls++
 	go v.Start(results)
 
-	for numCalls > 0 {
+	for numCalls > 0 { // PYTHON: this would be a while loop
 		waitForResponse(results)
 		numCalls--
 	}

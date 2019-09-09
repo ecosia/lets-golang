@@ -14,7 +14,7 @@ const (
 type HexBotJob struct{}
 
 // ID returns the job's ID
-func (h HexBotJob) ID() string {
+func (h HexBotJob) ID() string { // PYTHON: This is basically a method on HexBotJob
 	return hexBotID
 }
 
