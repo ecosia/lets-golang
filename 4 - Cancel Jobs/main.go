@@ -18,7 +18,7 @@ var (
 	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmicroseconds)
 )
 
-func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) {
+func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) bool {
 	select {
 	case result := <-results:
 		if result.Err != nil {
@@ -33,11 +33,13 @@ func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) {
 				logger.Printf("Unknown successful: %+v\n", res)
 			}
 		}
+		return false
 	case <-time.After(timeout):
 		for _, job := range jobs {
 			job.Cancel()
 			logger.Printf("Canceled %s\n", job.ID())
 		}
+		return true
 	}
 }
 
@@ -57,8 +59,10 @@ func main() {
 
 	numReceived := 0
 	for numReceived < len(startedJobs) {
-		waitForResponse(startedJobs, results)
-		numReceived++
+		canceled := waitForResponse(startedJobs, results)
+		if !canceled {
+			numReceived++
+		}
 	}
 	logger.Println("Exit")
 }

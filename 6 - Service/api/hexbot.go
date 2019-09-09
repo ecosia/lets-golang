@@ -7,8 +7,8 @@ import (
 )
 
 const (
-	// HexbotURL = "https://api.noopschallenge.com/hexbot"
-	HexbotURL = "http://slowwly.robertomurray.co.uk/delay/1000/url/https://api.noopschallenge.com/hexbot"
+	HexbotURL = "https://api.noopschallenge.com/hexbot"
+	// HexbotURL = "http://slowwly.robertomurray.co.uk/delay/10000/url/https://api.noopschallenge.com/hexbot"
 )
 
 type HexbotResponse struct {

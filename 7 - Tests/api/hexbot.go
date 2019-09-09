@@ -4,11 +4,13 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
+
+	"github.com/dohe/lets-golang/common"
 )
 
 const (
-	// HexbotURL = "https://api.noopschallenge.com/hexbot"
-	HexbotURL = "http://slowwly.robertomurray.co.uk/delay/1000/url/https://api.noopschallenge.com/hexbot"
+	HexbotURL = "https://api.noopschallenge.com/hexbot"
+	// HexbotURL = "http://slowwly.robertomurray.co.uk/delay/10000/url/https://api.noopschallenge.com/hexbot"
 )
 
 type HexbotResponse struct {
@@ -18,7 +20,7 @@ type HexbotResponse struct {
 }
 
 // CallHexbot calls the hexbot API and parses the returned JSON into a HexbotResponse struct
-func CallHexbot(cancelContext context.Context, client *http.Client) (*HexbotResponse, error) {
+func CallHexbot(cancelContext context.Context, client common.HTTPClient) (*HexbotResponse, error) {
 	req, err := http.NewRequestWithContext(cancelContext, "GET", HexbotURL, nil)
 	resp, err := client.Do(req)
 	if err != nil {
