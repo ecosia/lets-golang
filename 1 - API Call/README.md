@@ -1,4 +1,4 @@
-# 1 API Call
+# 1. API Call
 
 ## Steps
 
@@ -10,9 +10,9 @@
 | Main | `def main()` | `if __name__ == "__main__"` |
 | Printing | `fmt.Println` [🔗](https://golang.org/pkg/fmt/#Print) | `print` [🔗](https://docs.python.org/3/library/functions.html#print) |
 | String formatting | `fmt.Printf` [🔗](https://golang.org/pkg/fmt/#Printf) | `f'{var}'` [🔗](https://docs.python.org/3/tutorial/inputoutput.html#fancier-output-formatting) |
-| Types | Go has [static types](https://go101.org/article/type-system-overview.html) with inferred types | Python has [type annotations](https://docs.python.org/3/library/typing.html) an duck typing |
+| Types | Go has [static types](https://go101.org/article/type-system-overview.html) with inferred types | Python has [type annotations](https://docs.python.org/3/library/typing.html) and duck typing |
 | Structs | Go has [structs](https://tour.golang.org/moretypes/2) | In python you might use [data classes](https://docs.python.org/3/library/dataclasses.html) |
-| Making HTTP calls | [http](https://golang.org/pkg/net/http/#Get) | [urllib](https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen) or [requests](https://python-requests.org) |
+| Making HTTP calls | [http](https://golang.org/pkg/net/http/#Get) | [urllib](https://docs.python.org/3/library/urllib.request.html#urllib.request.urlopen) or [requests](https://2.python-requests.org/en/master/) |
 | Error handling | Explicit [error object](https://blog.golang.org/error-handling-and-go) | `raise` and `except` [🔗](https://docs.python.org/3/tutorial/errors.html) |
 | JSON parsing | Uses [json package](https://golang.org/pkg/encoding/json/#Unmarshal), trickier because of types | [json](https://docs.python.org/3/library/json.html#json.loads) |
 | Pointers | Yup [🔗](https://tour.golang.org/moretypes/1) | Nope, but e.g. lists and dictionaries are passed by reference. Or not... tricky question [🔗](https://www.jeffknupp.com/blog/2012/11/13/is-python-callbyvalue-or-callbyreference-neither/) |

@@ -9,9 +9,9 @@ import (
 func main() {
 	respHex, err := api.CallHexbot()
 	fmt.Printf("Error: %v\n", err)
-	fmt.Printf("Error: %+v\n", respHex)
+	fmt.Printf("Response: %+v\n", respHex)
 
 	respVex, err := api.CallVexbot()
 	fmt.Printf("Error: %v\n", err)
-	fmt.Printf("Error: %+v\n", respVex)
+	fmt.Printf("Response: %+v\n", respVex)
 }

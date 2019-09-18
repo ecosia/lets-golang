@@ -1,4 +1,4 @@
-# 2 Second API Call
+# 2. Second API Call
 
 ## Steps
 
