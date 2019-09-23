@@ -22,4 +22,4 @@ This workshop will try to illustrate two of the strengths of Go: strong web libr
 
 ## Let's Golang now!
 
-Start with [step 0](./0-&#45;-Getting-started).
+Start with [step 0](./0&#32;&#45;&#32;Getting&#32;started).
