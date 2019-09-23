@@ -1,5 +1,7 @@
 # Let's Golang!
 
+## Parallel programming for python developers
+
 👋 Hi there!
 
 We are [Jéssica](https://github.com/jessicalins) and [Dominik](https://github.com/DoHe) from [Ecosia](https://www.ecosia.org/) 🌳
@@ -15,6 +17,12 @@ Well, when you're reading/listening to this, you probably already have some init
 * It's a typed ⌨️ language with an interesting concept of interfaces 👥
 * It has an extensive standard library 📚, including things like a html template rendering engine 📄
 * It's heavily inspired by Python 🐍
+
+The title promised parallel programming, so why do we think Go is a good choice for that, especially when coming from Python?
+
+**Python** sadly has some shortcomings when trying do things in parallel. The most commonly used Python implementation, CPython, has a [Global Interpreter Lock](https://en.wikipedia.org/wiki/Global_interpreter_lock) 🔒 which effectively limits parallelism – although less so when waiting for external resources like a filesystem or a HTTP call as these happen mostly outside the GIL. This can be avoided by using `multiprocessing` (using system processes) instead of `threading` (using OS threads), but at the cost of slower startup time 🐢 and higher memory consumption 💾. Additionally, the built-in functionality for synchronizing between threads (using `queue.Queue` and `threading.Lock`) can be rather intimidating and hard to understand and read ⚗️. Another issue is that a lot of objects in Python aren't meant to be shared between threads or processes, so "manual" serialization and access locking is necessary 🗝️.
+
+**Go** on the other hand has parallel execution as one of its core language features. That manifests in three ways. Firstly, Go uses a very efficient implementation of threads called `goroutines` that can run several light-weight 🦢 Go threads inside a single OS thread and manages the threads for you, neatly combining concurrency and parallelism. Secondly, there is a core language feature to start execution in a goroutine (the `go` keyword) 🎢 and a very accessible communication model to share memory between goroutines without caring about race conditions (channels) ⛵. And lastly, most of the Go's standard library is thread-safe 🧵, so there is no need for extra locks when sharing objects among goroutines.
 
 ## What will we do?
 
