@@ -14,7 +14,7 @@ const (
 )
 
 type Result struct {
-	Color string `json:"color,omitempty"`
+	Color string `json:"color,omitempty"` // PYTHON: some customization possible by subclassing json.JSONEncoder
 	Point struct {
 		X int
 		Y int

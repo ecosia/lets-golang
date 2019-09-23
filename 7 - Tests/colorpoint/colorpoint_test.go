@@ -14,7 +14,7 @@ type ClientMock struct {
 	err     error
 }
 
-func (c *ClientMock) Do(req *http.Request) (*http.Response, error) {
+func (c *ClientMock) Do(req *http.Request) (*http.Response, error) { // PYTHON: more easily done with unittest.mock
 	body := ""
 	if strings.Contains(req.URL.Path, "hex") {
 		body = c.hexBody
@@ -33,7 +33,7 @@ func clientMock(hexBody, vexBody string, err error) ClientMock {
 	return ClientMock{hexBody, vexBody, err}
 }
 
-func TestGet(t *testing.T) {
+func TestGet(t *testing.T) { // PYTHON: unittest.TestCase
 	hexResponse := `{
 		"colors": [
 			{ "value": "#FFAA00" }
@@ -64,7 +64,7 @@ func TestGet(t *testing.T) {
 	}
 
 	for _, test := range tests {
-		t.Run(test.name, func(t *testing.T) {
+		t.Run(test.name, func(t *testing.T) { // PYTHON: unittest.TestCase.subTest
 			client := clientMock(test.hexBody, test.vexBody, test.err)
 			actual := Get(&client)
 			if actual != test.expected {

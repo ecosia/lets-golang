@@ -34,7 +34,7 @@ func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) bool {
 			}
 		}
 		return false
-	case <-time.After(timeout):
+	case <-time.After(timeout): // PYTHON: something similar can be achieved with Queue.get(timeout=timeout)
 		for _, job := range jobs {
 			job.Cancel()
 			logger.Printf("Canceled %s\n", job.ID())

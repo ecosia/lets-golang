@@ -18,8 +18,8 @@ func waitForResponse(results chan jobs.JobResult) {
 		if result.Err != nil {
 			logger.Printf("%s failed: %s\n", result.ID, result.Err.Error())
 		} else {
-			switch res := result.Result.(type) {
-			case *api.HexbotResponse:
+			switch res := result.Result.(type) { // PYTHON: similar to isinstance
+		case *api.HexbotResponse: // PYTHON: if/elif/else
 				logger.Printf("Hexbot successful: %+v\n", res)
 			case *api.VexbotResponse:
 				logger.Printf("Vexbot successful: %+v\n", res)

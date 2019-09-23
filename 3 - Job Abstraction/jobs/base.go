@@ -6,7 +6,7 @@ type JobResult struct {
 	Err    error
 }
 
-type Job interface { // PYTHON: You'd do something similar with classes and inheritance
+type Job interface { // PYTHON: You'd do something similar with (abstract) classes and inheritance
 	ID() string
 	Start(done chan JobResult)
 	Cancel()

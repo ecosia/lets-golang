@@ -15,7 +15,7 @@ const (
 func newHandler(client *http.Client) func(w http.ResponseWriter, r *http.Request) {
 	return func(w http.ResponseWriter, r *http.Request) {
 		res := colorpoint.Get(client)
-		jsonRes, err := json.Marshal(res)
+		jsonRes, err := json.Marshal(res) // PYTHON: json.dumps()
 		if err != nil {
 			http.Error(w, err.Error(), http.StatusInternalServerError)
 			return
@@ -27,7 +27,7 @@ func newHandler(client *http.Client) func(w http.ResponseWriter, r *http.Request
 
 func Serve() {
 	client := http.DefaultClient
-	http.HandleFunc("/", newHandler(client))
+	http.HandleFunc("/", newHandler(client)) // PYTHON: No built-in routing
 	log.Printf("Starting server: http://%s", port)
-	log.Fatal(http.ListenAndServe(port, nil))
+	log.Fatal(http.ListenAndServe(port, nil)) // PYTHON: http.server's serve_forever()
 }
