@@ -2,6 +2,17 @@
 
 ## Steps
 
+* Create a main entry point
+  * Create a file called `main.go`
+  * Make it part of the `main` package
+  * Create a `main` function
+* Write code to call first API
+  * Create folder & package `api`
+  * Create a module called `hexbot.go`
+  * Call Github's [hexbot API](https://api.noopschallenge.com/hexbot) in a `CallHexbot() (*HexbotResponse, error)` function
+  * Unmarshal JSON response to a `HexbotResponse` struct
+* Run your code with `go run main.go`
+
 ## New concepts
 
 | Concept | Go | Python |

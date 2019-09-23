@@ -2,6 +2,26 @@
 
 ## Steps
 
+* Write base job abstraction
+  * Create a new folder & package `jobs`
+  * Write a `JobResults` struct, with:
+    * the job's `ID` (`string`)
+    * the job's `Result` (we don't know the type beforehand, so `interface{}`)
+    * a potential error `Err` (`error`)
+  * Write a `Job` interface, defined by:
+    * `ID()`
+    * `Start(done chan JobResult)`
+    * `Cancel()`
+* Write a hexbot job (`jobs/hexbot.go`)
+  * Follow the base `Job` interface (`Cancel` will be a no-op for now)
+  * In `Start`, call `api.CallHexbot()` and write the `JobResult` to the provided channel
+* Write a vexbot job (`jobs/vexbot.go`)
+* Start both jobs in the main
+  * Use the `go` keyword to start a new goroutine
+  * Create a channel and pass it to the jobs
+  * Wait on the channel until both jobs have send a message
+  * Use a type assertion switch/case to print what job the received `JobResult` came from
+
 ## New concepts
 
 | Concept | Go | Python |

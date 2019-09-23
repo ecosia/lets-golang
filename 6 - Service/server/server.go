@@ -9,7 +9,7 @@ import (
 )
 
 const (
-	port = "0.0.0.0:9876"
+	addr = "0.0.0.0:9876"
 )
 
 func newHandler(client *http.Client) func(w http.ResponseWriter, r *http.Request) {
@@ -28,6 +28,6 @@ func newHandler(client *http.Client) func(w http.ResponseWriter, r *http.Request
 func Serve() {
 	client := http.DefaultClient
 	http.HandleFunc("/", newHandler(client)) // PYTHON: No built-in routing
-	log.Printf("Starting server: http://%s", port)
-	log.Fatal(http.ListenAndServe(port, nil)) // PYTHON: http.server's serve_forever()
+	log.Printf("Starting server: http://%s", addr)
+	log.Fatal(http.ListenAndServe(addr, nil)) // PYTHON: http.server's serve_forever()
 }

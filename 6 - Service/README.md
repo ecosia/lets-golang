@@ -2,6 +2,12 @@
 
 ## Steps
 
+* Create a server
+  * Create a `server` module & package
+  * Create a `Serve` function, that starts a http server, serving `0.0.0.0:9876/`
+  * Create a handleFunc that calls `colorpoint`'s `Get` and serializes the result to JSON
+* Start the server in your `main.go` calling `server`'s `Serve`
+
 ## New concepts
 
 | Concept | Go | Python |
