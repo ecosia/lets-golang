@@ -1,4 +1,4 @@
-package api // PYTHON: This is like python modules
+package api
 
 import (
 	"encoding/json"
@@ -9,7 +9,7 @@ const (
 	HexbotURL = "https://api.noopschallenge.com/hexbot"
 )
 
-type HexbotResponse struct { // PYTHON: You'd probably do that with a (data)class
+type HexbotResponse struct {
 	Colors []struct {
 		Value string
 	}
@@ -17,15 +17,15 @@ type HexbotResponse struct { // PYTHON: You'd probably do that with a (data)clas
 
 // CallHexbot calls the hexbot API and parses the returned JSON into a HexbotResponse struct
 func CallHexbot() (*HexbotResponse, error) {
-	resp, err := http.Get(HexbotURL) // PYTHON: Similar to urllib / requests
+	resp, err := http.Get(HexbotURL)
 	if err != nil {
-		return nil, err // PYTHON: None
+		return nil, err
 	}
 	return unmarshalHexbotResponse(resp)
 }
 
 func unmarshalHexbotResponse(resp *http.Response) (*HexbotResponse, error) {
 	var parsed HexbotResponse
-	err := json.NewDecoder(resp.Body).Decode(&parsed) // PYTHON: This would just be json.loads(body)
-	return &parsed, err                               // PYTHON: Has no explicit pointers
+	err := json.NewDecoder(resp.Body).Decode(&parsed)
+	return &parsed, err
 }

@@ -14,7 +14,7 @@ This project uses go modules so you can clone it to wherever you like, it does _
 
 ## Structure
 
-This workshop is split up into 8 steps, 7 of which involve writing code. Each folder contains all the code written in the previous steps and the changes added in that step.
+This workshop is split up into 10 steps, 9 of which involve writing code. Each folder contains all the code written in the previous steps and the changes added in that step.
 
 Each step comes with a README that gives some more background on what will happen in that step and which new concepts are being introduced. You will also find links to read up on all of these concepts. Whenever new concepts are introduced in the code there will be a comment that tells you how you could do the same thing in python.
 

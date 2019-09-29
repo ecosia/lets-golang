@@ -15,7 +15,7 @@ const (
 )
 
 var (
-	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmicroseconds)
+	logger = log.New(os.Stdout, "", log.Ldate|log.Ltime|log.Lmicroseconds) // PYTHON: Similar to python's logging
 )
 
 func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) bool {
@@ -34,7 +34,7 @@ func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) bool {
 			}
 		}
 		return false
-	case <-time.After(timeout): // PYTHON: something similar can be achieved with Queue.get(timeout=timeout)
+	case <-time.After(timeout):
 		for _, job := range jobs {
 			job.Cancel()
 			logger.Printf("Canceled %s\n", job.ID())

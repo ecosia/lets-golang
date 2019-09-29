@@ -1,13 +1,13 @@
 package api
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 )
 
 const (
-	// HexbotURL = "https://api.noopschallenge.com/hexbot"
-	HexbotURL = "http://slowwly.robertomurray.co.uk/delay/3000/url/https://api.noopschallenge.com/hexbot"
+	HexbotURL = "https://api.noopschallenge.com/hexbot"
 )
 
 type HexbotResponse struct {
@@ -17,8 +17,9 @@ type HexbotResponse struct {
 }
 
 // CallHexbot calls the hexbot API and parses the returned JSON into a HexbotResponse struct
-func CallHexbot() (*HexbotResponse, error) {
-	resp, err := http.Get(HexbotURL)
+func CallHexbot(cancelContext context.Context, client *http.Client) (*HexbotResponse, error) {
+	req, err := http.NewRequestWithContext(cancelContext, "GET", HexbotURL, nil)
+	resp, err := client.Do(req) // This also allows for reusing the underlying TCP connection
 	if err != nil {
 		return nil, err
 	}

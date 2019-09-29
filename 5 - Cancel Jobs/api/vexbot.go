@@ -1,13 +1,13 @@
 package api
 
 import (
+	"context"
 	"encoding/json"
 	"net/http"
 )
 
 const (
-	// VexbotURL = "https://api.noopschallenge.com/vexbot"
-	VexbotURL = "http://slowwly.robertomurray.co.uk/delay/4000/url/https://api.noopschallenge.com/vexbot"
+	VexbotURL = "https://api.noopschallenge.com/vexbot"
 )
 
 type Point struct {
@@ -26,8 +26,9 @@ type VexbotResponse struct {
 }
 
 // CallVexbot calls the vexbot API and parses the returned JSON into a VexbotResponse struct
-func CallVexbot() (*VexbotResponse, error) {
-	resp, err := http.Get(VexbotURL)
+func CallVexbot(cancelContext context.Context, client *http.Client) (*VexbotResponse, error) {
+	req, err := http.NewRequestWithContext(cancelContext, "GET", VexbotURL, nil)
+	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err
 	}

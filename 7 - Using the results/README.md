@@ -1,4 +1,4 @@
-# 5. Using the results
+# 7. Using the results
 
 ## Steps
 

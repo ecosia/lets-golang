@@ -28,6 +28,8 @@ The title promised parallel programming, so why do we think Go is a good choice 
 
 This workshop will try to illustrate two of the strengths of Go: strong web libraries and parallelism. For this we will built a simplified version of a service that we are running at Ecosia in production. The web service that we will build is supposed to call several APIs in parallel while enforcing a maximum timeout for all calls and will return a JSON response made up from the APIs' responses.
 
+If you are attending a live session: there will be two people running the workshop, please ask the one _not_ presenting and they will walk over to you. If they feel your question is relevant for everyone they will share it with everyone.
+
 ## Let's Golang now!
 
 Start with [step 0](./0&#32;&#45;&#32;Getting&#32;started).
