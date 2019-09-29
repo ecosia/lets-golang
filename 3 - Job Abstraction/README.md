@@ -4,7 +4,7 @@
 
 * Write base job abstraction
   * Create a new folder & package `jobs`
-  * Write a `JobResults` struct, with:
+  * Write a `JobResult` struct, with:
     * the job's `ID` (`string`)
     * the job's `Result` (we don't know the type beforehand, so `interface{}`)
     * a potential error `Err` (`error`)

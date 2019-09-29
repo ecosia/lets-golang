@@ -3,8 +3,7 @@
 ## Steps
 
 * Write code to call second API
-  * Create a new module in `api` package
-  * Create a module called `vexbot.go`
+  * Create a new module called `vexbot.go` in `api` package
   * Call Github's [vexbot API](https://api.noopschallenge.com/vexbot) (`CallVexbot`)
   * Unmarshal JSON response to a `VexbotResponse` struct
 
