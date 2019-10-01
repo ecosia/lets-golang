@@ -13,7 +13,7 @@ const (
 	timeout = 2 * time.Second
 )
 
-func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) bool {
+func waitForResponse(startedJobs []jobs.Job, results chan jobs.JobResult) bool {
 	select {
 	case result := <-results:
 		if result.Err != nil {
@@ -30,7 +30,7 @@ func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) bool {
 		}
 		return false
 	case <-time.After(timeout): // PYTHON: something similar can be achieved with Queue.get(timeout=timeout)
-		for _, job := range jobs {
+		for _, job := range startedJobs {
 			job.Cancel()
 			fmt.Printf("Canceled %s\n", job.ID())
 		}

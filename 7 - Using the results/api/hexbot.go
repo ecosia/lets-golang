@@ -20,6 +20,9 @@ type HexbotResponse struct {
 // CallHexbot calls the hexbot API and parses the returned JSON into a HexbotResponse struct
 func CallHexbot(cancelContext context.Context, client *http.Client) (*HexbotResponse, error) {
 	req, err := http.NewRequestWithContext(cancelContext, "GET", HexbotURL, nil)
+	if err != nil {
+		return nil, err
+	}
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err

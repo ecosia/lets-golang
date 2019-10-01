@@ -29,6 +29,9 @@ type VexbotResponse struct {
 // CallVexbot calls the vexbot API and parses the returned JSON into a VexbotResponse struct
 func CallVexbot(cancelContext context.Context, client *http.Client) (*VexbotResponse, error) {
 	req, err := http.NewRequestWithContext(cancelContext, "GET", VexbotURL, nil)
+	if err != nil {
+		return nil, err
+	}
 	resp, err := client.Do(req)
 	if err != nil {
 		return nil, err

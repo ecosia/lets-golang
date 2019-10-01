@@ -26,7 +26,8 @@ func (h HexBotJob) Cancel() {
 // Start runs the job
 func (h HexBotJob) Start(done chan JobResult) {
 	resp, err := api.CallHexbot()
-	done <- JobResult{ID: hexBotID, Result: resp, Err: err}
+	res := JobResult{ID: hexBotID, Result: resp, Err: err}
+	done <- res
 }
 
 // NewHexBotJob creates a new job that returns a hexbot response
