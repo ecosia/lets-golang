@@ -8,19 +8,17 @@ import (
 )
 
 func waitForResponse(results chan jobs.JobResult) {
-	select {
-	case result := <-results: // PYTHON: You could build something similar with queue and threads
-		if result.Err != nil {
-			fmt.Printf("%s failed: %s\n", result.ID, result.Err.Error())
-		} else {
-			switch res := result.Result.(type) { // PYTHON: similar to isinstance
-			case *api.HexbotResponse: // PYTHON: if/elif/else
-				fmt.Printf("Hexbot successful: %+v\n", res)
-			case *api.VexbotResponse:
-				fmt.Printf("Vexbot successful: %+v\n", res)
-			default:
-				fmt.Printf("Unknown successful: %+v\n", res)
-			}
+	result := <-results // PYTHON: You could build something similar with queue and threads
+	if result.Err != nil {
+		fmt.Printf("%s failed: %s\n", result.ID, result.Err.Error())
+	} else {
+		switch res := result.Result.(type) { // PYTHON: similar to isinstance
+		case *api.HexbotResponse: // PYTHON: if/elif/else
+			fmt.Printf("Hexbot successful: %+v\n", res)
+		case *api.VexbotResponse:
+			fmt.Printf("Vexbot successful: %+v\n", res)
+		default:
+			fmt.Printf("Unknown successful: %+v\n", res)
 		}
 	}
 }
