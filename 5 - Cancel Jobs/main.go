@@ -52,12 +52,11 @@ func main() {
 	startedJobs = append(startedJobs, v)
 	go v.Start(results)
 
-	numReceived := 0
-	for numReceived < len(startedJobs) {
-		canceled := waitForResponse(startedJobs, results)
-		if !canceled {
-			numReceived++
-		}
+	canceled1 := waitForResponse(startedJobs, results)
+	canceled2 := waitForResponse(startedJobs, results)
+	if canceled1 || canceled2 {
+		waitForResponse(startedJobs, results)
 	}
+
 	fmt.Println("Exit")
 }

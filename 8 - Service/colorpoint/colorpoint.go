@@ -38,6 +38,24 @@ func waitForResponse(jobs []jobs.Job, results chan jobs.JobResult) (interface{},
 	}
 }
 
+func addData(result interface{}, cpResult *Result) {
+	if result == nil {
+		return
+	}
+	switch res := result.(type) {
+	case *api.HexbotResponse:
+		if len(res.Colors) > 0 {
+			cpResult.Color = res.Colors[0].Value
+		}
+	case *api.VexbotResponse:
+		if len(res.Vectors) > 0 {
+			cpResult.Point = res.Vectors[0].A
+		}
+	default:
+		fmt.Printf("Unrecognized response type: %+v\n", res)
+	}
+}
+
 func Get(client *http.Client) Result {
 	results := make(chan jobs.JobResult)
 	var startedJobs []jobs.Job
@@ -51,29 +69,18 @@ func Get(client *http.Client) Result {
 	go v.Start(results)
 
 	var colorPointResult Result
-	numReceived := 0
-	for numReceived < len(startedJobs) {
-		result, canceled := waitForResponse(startedJobs, results)
-		if canceled {
-			continue
-		}
-		numReceived++
-		if result == nil {
-			continue
-		}
-		switch res := result.(type) {
-		case *api.HexbotResponse:
-			if len(res.Colors) > 0 {
-				colorPointResult.Color = res.Colors[0].Value
-			}
-		case *api.VexbotResponse:
-			if len(res.Vectors) > 0 {
-				colorPointResult.Point = res.Vectors[0].A
-			}
-		default:
-			fmt.Printf("Unrecognized response type: %+v\n", res)
-		}
+
+	result, canceled := waitForResponse(startedJobs, results)
+	if canceled {
+		return colorPointResult
 	}
+	addData(result, &colorPointResult)
+
+	result, canceled = waitForResponse(startedJobs, results)
+	if canceled {
+		return colorPointResult
+	}
+	addData(result, &colorPointResult)
 
 	return colorPointResult
 }

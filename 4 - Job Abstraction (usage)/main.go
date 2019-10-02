@@ -26,19 +26,15 @@ func waitForResponse(results chan jobs.JobResult) {
 func main() {
 	fmt.Println("Start")
 	results := make(chan jobs.JobResult)
-	numCalls := 0
 
 	h := jobs.NewHexBotJob()
-	numCalls++
 	go h.Start(results)
 
 	v := jobs.NewVexBotJob()
-	numCalls++
 	go v.Start(results)
 
-	for numCalls > 0 { // PYTHON: this would be a while loop
-		waitForResponse(results)
-		numCalls--
-	}
+	waitForResponse(results)
+	waitForResponse(results)
+
 	fmt.Println("Exit")
 }
