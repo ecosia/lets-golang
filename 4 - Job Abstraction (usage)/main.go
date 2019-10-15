@@ -8,7 +8,6 @@ import (
 )
 
 func waitForResponse(results chan jobs.JobResult) {
-
 	result := <-results // PYTHON: You could build something similar with queue and threads
 
 	if result.Err != nil {
