@@ -14,5 +14,7 @@
 | Concept | Go | Python |
 |---|---|---|
 | Synchronizing threaded execution | The `go` keyword and channels [🔗](https://tour.golang.org/concurrency/2) | Possible to implement with a combination of [threads](https://docs.python.org/3.7/library/threading.html) and a [queue](https://docs.python.org/3/library/queue.html) |
-| Loops | only `for` [🔗](https://tour.golang.org/flowcontrol/1) | `for` and `while` [🔗](https://www.learnpython.org/en/Loops) |
+| Infinite loop | `for` without arguments [🔗](https://tour.golang.org/flowcontrol/1) | `while True` [🔗](https://www.learnpython.org/en/Loops) |
+| Single condition loop | `for` with one argument [🔗](https://tour.golang.org/flowcontrol/1) | `while` [🔗](https://www.learnpython.org/en/Loops) |
+| C-style for loop | `for` with three arguments [🔗](https://tour.golang.org/flowcontrol/1) | `for` [🔗](https://www.learnpython.org/en/Loops) |
 | Type assertion | `.(type)` [🔗](https://tour.golang.org/methods/15) | `isinstance` [🔗](https://docs.python.org/3.7/library/functions.html#isinstance) |
