@@ -1,5 +1,7 @@
 # Let's Golang!
 
+⚠️ ***Please note that the content may not be representative of Ecosia's current engineering standards.***
+
 ## Parallel programming for python developers
 
 👋 Hi there!
